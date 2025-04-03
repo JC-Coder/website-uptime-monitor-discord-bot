@@ -29,7 +29,7 @@ const notifier = new DiscordNotifier(
 );
 
 // Schedule monitoring every 2 minutes
-cron.schedule("* * * * *", async () => {
+cron.schedule("*/2 * * * *", async () => {
   try {
     console.log("Checking all sites...");
     const results = await monitor.checkAllSites();
