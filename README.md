@@ -32,7 +32,9 @@ A Discord bot that monitors website uptime and sends notifications when sites ar
    - Copy your channel ID and add it to the `.env` file
 
 5. Configure your sites:
-   - Edit `src/index.ts` and update the `sites` array with your websites
+   - Create or edit `data.ts` in the root directory with your sites to monitor
+   - The repository contains a sample data.ts template you can use
+   - This file is gitignored to keep your site configuration private
 
 ## Running the Bot
 
@@ -115,13 +117,37 @@ This project includes PM2 configuration for easy deployment on AWS or other serv
    nano .env
    ```
 
-5. Create logs directory:
+5. Create your site monitoring configuration:
+
+   ```bash
+   # Create or edit data.ts file with your sites to monitor
+   nano data.ts
+   ```
+
+   Add your site configuration to data.ts:
+
+   ```typescript
+   import { SiteConfig } from "./src/types";
+
+   export const sitesToMonitor: SiteConfig[] = [
+     {
+       url: "https://yoursite.com",
+       name: "Your Site Name",
+       expectedResponseTime: 3000, // 3 seconds
+     },
+     // Add more sites as needed
+   ];
+   ```
+
+   > **Note**: The data.ts file is included in .gitignore to prevent accidentally committing your private site data to the public repository.
+
+6. Create logs directory:
 
    ```bash
    mkdir -p logs
    ```
 
-6. Build and start the application with PM2:
+7. Build and start the application with PM2:
    ```bash
    npm run deploy
    ```

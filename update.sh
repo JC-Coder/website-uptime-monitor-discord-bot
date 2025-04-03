@@ -5,6 +5,7 @@ set -e
 
 echo "==== Starting update process ===="
 echo "Pulling latest changes from git..."
+# The data.ts file is gitignored and will not be affected by git pull
 git pull
 
 echo "Installing dependencies..."

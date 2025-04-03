@@ -26,6 +26,7 @@ export class SiteMonitor {
         timestamp: new Date(),
       };
     } catch (error) {
+      console.error("Error checking site", site.url, error);
       return {
         site,
         status: "down",
