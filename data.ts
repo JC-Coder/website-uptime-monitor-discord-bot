@@ -16,12 +16,7 @@ export const sitesToMonitor: SiteConfig[] = [
   // Staging website
   {
     url: "https://staging-v1.ogaticket.com",
-    name: "Ogaticket staging two - no tour site",
-    expectedResponseTime: 3000, // 3 seconds
-  },
-  {
-    url: "https://api-staging-v1.ogaticket.com",
-    name: "OgaTicket Staging V1 website",
+    name: "Ogaticket Staging V1 Website",
     expectedResponseTime: 3000, // 3 seconds
   },
 
