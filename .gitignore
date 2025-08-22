@@ -40,7 +40,3 @@ logs/
 
 # Test coverage
 coverage/
-
-
-# Ignore data.ts file
-data.ts
