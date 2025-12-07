@@ -1,38 +1,38 @@
 import { SiteConfig } from "./src/types";
 
-/// STAGING SITES ARE SLOWER THAN PRODUCTION SITES HENCE THE 10 SECOND TIMEOUT FOR STAGING SITES
+// Timeout set to 10 seconds for all sites
 
 export const sitesToMonitor: SiteConfig[] = [
   // Production websites
   {
     url: "https://ogaticket.com",
     name: "OgaTicket Production Landing Page",
-    expectedResponseTime: 6000, // 6 seconds
+    expectedResponseTime: 10000,
   },
   {
     url: "https://hubafric.ogaticket.com",
     name: "HubAfric Website",
-    expectedResponseTime: 6000, // 6 seconds
+    expectedResponseTime: 10000,
   },
 
   // Staging website
   {
     url: "https://staging-v1.ogaticket.com",
     name: "Ogaticket Staging V1 Website",
-    expectedResponseTime: 10000, // 10 seconds
+    expectedResponseTime: 10000,
   },
 
   // Production API
   {
     url: "https://api-v1.ogaticket.com/api/setting",
     name: "OgaTicket Production API",
-    expectedResponseTime: 6000, // 6 seconds
+    expectedResponseTime: 10000,
   },
 
   // Staging API
   {
     url: "https://api-staging-v1.ogaticket.com/api/setting",
     name: "OgaTicket Staging API",
-    expectedResponseTime: 10000, // 10 seconds
+    expectedResponseTime: 10000,
   },
 ];
