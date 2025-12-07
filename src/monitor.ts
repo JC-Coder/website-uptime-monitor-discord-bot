@@ -13,7 +13,7 @@ export class SiteMonitor {
     const startTime = Date.now();
     try {
       const response = await axios.get(site.url, {
-        timeout: this.defaultTimeout,
+        timeout: site?.expectedResponseTime ?? this.defaultTimeout,
       });
 
       const responseTime = Date.now() - startTime;
