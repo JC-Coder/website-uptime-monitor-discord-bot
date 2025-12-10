@@ -10,37 +10,37 @@ dotenv.config();
 // Validate required environment variables
 const requiredEnvVars = ["DISCORD_TOKEN", "DISCORD_CHANNEL_ID"];
 for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar]) {
-    throw new Error(`Missing required environment variable: ${envVar}`);
-  }
+    if (!process.env[envVar]) {
+        throw new Error(`Missing required environment variable: ${envVar}`);
+    }
 }
 
 // Configure your sites to monitor
 const sites: SiteConfig[] = sitesToMonitor;
 
 if (!sites.length) {
-  throw new Error("No sites to monitor");
+    throw new Error("No sites to monitor");
 }
 
 const monitor = new SiteMonitor(sites);
 const notifier = new DiscordNotifier(
-  process.env.DISCORD_TOKEN!,
-  process.env.DISCORD_CHANNEL_ID!
+    process.env.DISCORD_TOKEN!,
+    process.env.DISCORD_CHANNEL_ID!
 );
 
 // Schedule monitoring every 2 minutes
 cron.schedule("*/2 * * * *", async () => {
-  try {
-    console.log("Checking all sites...");
-    const results = await monitor.checkAllSites();
+    try {
+        console.log("Checking all sites...");
+        const results = await monitor.checkAllSites();
 
-    // Send notifications for any issues
-    for (const result of results) {
-      if (result.status !== "up") {
-        await notifier.sendNotification(result);
-      }
+        // Send notifications for any issues
+        for (const result of results) {
+            if (result.status !== "up") {
+                await notifier.sendNotification(result);
+            }
+        }
+    } catch (error) {
+        console.error("Error in monitoring schedule:", error);
     }
-  } catch (error) {
-    console.error("Error in monitoring schedule:", error);
-  }
 });
