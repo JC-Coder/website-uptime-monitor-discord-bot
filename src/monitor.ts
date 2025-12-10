@@ -3,7 +3,7 @@ import { SiteConfig, MonitoringResult } from "./types";
 
 export class SiteMonitor {
     private sites: SiteConfig[];
-    private defaultTimeout = 15000; // 10 seconds
+    private defaultTimeout = 20000; // 20 seconds
 
     constructor(sites: SiteConfig[]) {
         this.sites = sites;
